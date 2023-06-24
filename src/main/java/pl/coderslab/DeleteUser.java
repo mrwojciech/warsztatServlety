@@ -19,13 +19,9 @@ public class DeleteUser extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getParameter("id");
-        resp.getWriter().println("<form method='post'>");
-        resp.getWriter().println("<button type='submit'> Are you sure?</button>");
-        resp.getWriter().println("</form>");
-        resp.getWriter().println("<form action='/user/list' method='get'>");
-        resp.getWriter().println("<button type='submit'> Cancel?</button>");
+        req.setAttribute("id", req.getParameter("id"));
 
+        getServletContext().getRequestDispatcher("/confirmation.jsp").forward(req, resp);
 
     }
 }

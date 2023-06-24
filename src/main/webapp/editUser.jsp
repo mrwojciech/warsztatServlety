@@ -1,33 +1,73 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: wojtek
-  Date: 24.06.2023
-  Time: 12:36
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Edit User</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Edytuj użytkownika</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 <body>
-<form action="/user/edit" method="post">
+<section class="section">
+    <div class="container">
+        <h1 class="title">
+            Edytuj użytkownika
+        </h1>
+        <p class="subtitle">
+            Możesz dodawać, edytować, oglądać i usuwać!
+        </p></div>
+</section>
+<div class="container">
+    <div class="notification is-primary">
 
-    <p>Id <c:out value="${user.id}"/></p>
-    <input value="${user.id}" name="id" type="text" readonly/><br>
-    <p>Name <c:out value="${user.username}"/></p>
+        <form>
+            <button class="button is-small is-link is-light" type="submit" formaction="/user/list" method="post">
+                Powrót
+            </button>
+        </form>
+        <br>
 
-    <input value="${user.username}" name="username" type="text"/><br>
-    <p>Email <c:out value="${user.email}"/></p>
+        <table class="table">
 
-    <input value="${user.email}" name="email" type="text"/><br>
-    <p>Password <c:out value="${user.password}"/></p>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <form>
+                    <td><c:out value="${user.id}"/></td>
 
-    <input value="${user.password}" name="password" type="text"/><br>
-    <button type="submit">Zatwierdz</button>
+                    <td><input value="${user.username}" name="username" type="text"/></td>
 
-</form>
+                    <td><input value="${user.email}" name="email" type="text"/></td>
 
+                    <td><input value="${user.password}" name="password" type="text"/><br></td>
+                    <td>
+                        <input type="hidden" name="id" value="${user.id}">
+                        <button class="button is-small is-text" type="submit" formaction="/user/edit" formmethod="post">
+                            Zatwierdź
+                        </button>
+                    </td>
+                    <td></td>
+                    <td></td>
+
+                </form>
+            </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+</div>
 </body>
+</html>
 </html>

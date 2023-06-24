@@ -12,7 +12,12 @@ public class AddNewUser extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect("/addUser.jsp");
+/*
+        req.setAttribute("id", req.getParameter("id"));
+        getServletContext().getRequestDispatcher("/a")
+*/
+        getServletContext().getRequestDispatcher("/addUser.jsp").forward(req,resp);
+//        resp.sendRedirect("/addUser.jsp");
     }
 
 
